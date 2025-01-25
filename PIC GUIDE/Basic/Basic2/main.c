@@ -10,8 +10,8 @@
  * jika PB di tekan LED1 akan menyala, jika ia dilepaskan PB LED2 akan menyala
  * 
  * CONNECTION
- * RB0 = PUSHBUTTON
- * RB2 = LED1
+ * RB0 = PUSHBUTTON PULL-DOWN
+ * RB1 = LED1
  * 
  * Created on January 25, 2025, 6:23 PM
  */
@@ -42,25 +42,27 @@
 #define _XTAL_FREQ 20000000
 
 #define PUSHBUTTON PORTBbits.RB0
-#define LED1 PORTBbits.RB2
+#define LED1 PORTBbits.RB1
 //we can give name to our pins
 
 void main(void) //Setup section
 {
+    //Register I/O
     TRISB0 = 1;
-    TRISB2 = 0;
+    TRISB1 = 0;
 
     LED1 = 0;
     while(1) //looping section
     {
-        if (PUSHBUTTON == 1)
+        if (PUSHBUTTON == 1) //Pushbutton ditekan
         {
-            LED1 = 1;
+            LED1 = 1; //LED1 ON
         }
+        
         
         else
         {
-            LED1 = 0;
+            LED1 = 0; //LED1 OFF
             
         }
 
